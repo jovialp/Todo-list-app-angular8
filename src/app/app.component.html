@@ -1,0 +1,109 @@
+<div class=bg>
+
+	<h1 class="title"> <span class="barMenu" (click)="toggleNav();"></span> {{ title }}</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12" *ngFor="let todo of showTodos">
+				<div class="box">
+					<!-- <span class="completed" (click)="toggleStatus(todo);">{{todo.done ? "&#10006;":"&#10004;"}}</span> -->
+					<span class="close-box" (click)="deleteTodo(todo);"><i class="glyphicon glyphicon-trash"></i></span>
+					<h4>{{todo.label}}</h4>
+					<div class="star">
+						<div class="stars-outer">
+							<div class="stars-inner" *ngIf="todo.priority >=1"></div>
+						</div>
+						<div class="stars-outer">
+							<div class="stars-inner" *ngIf="todo.priority >=2"></div>
+						</div>
+						<div class="stars-outer">
+							<div class="stars-inner" *ngIf="todo.priority >=3"></div>
+						</div>
+					</div>
+					<div class="roundbox" (click)="toggleStatus(todo); setTodos();">
+						<span class="checkbox-tick" *ngIf="todo.done"></span>
+					</div>
+					<p>{{todo.done ? "Completed":"Pending"}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="space"></div>
+
+		<div class="addButton" [class.active]="addStatus" (click)="toggleAdd();">
+			<!-- <input type="checkbox" id="toggleCheckbox" class="toggleCheckbox"/> -->
+			<div class="closeButton"></div>
+		</div>
+
+		<div class="addMenu" [class.showAddmenu]="addStatus">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-center">
+					<h2>New Todo</h2>
+					<hr />
+				</div>
+        <form #simple="ngForm">
+				<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+					<label>I want to</label>
+					<input type="text" id="newLabel" name="newLabel" #newLabel="ngModel" ngModel placeholder="Buy Vegetables"  required class="form-control"/>
+          <div class="validation" *ngIf="!newLabel.valid && (newLabel.dirty || newLabel.touched)">
+                   * Todo Field is Required
+                </div>
+          </div> 
+					<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+						<label>My Priority is</label>
+						<select  #newPriority class="form-control">
+              <option value="1">Low</option>
+              <option value="2">Medium</option>
+              <option value="3">High</option>
+            </select>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-center">
+						<button class="btn" (click)="addTodo(newLabel.value,newPriority.value); simple.reset(); toggleAdd();" [disabled]="!simple.valid">Add</button>
+					</div>
+        </form>
+				</div>
+			</div>
+		</div>
+		<div class="navMenu pm" [class.showNav]="navStatus">
+			<div class="container-fluid pm">
+				<div class="row pm">
+					<div class="col-xs-10 pm">
+						<div class="navMenuContent pm">
+							<div class="profile">
+								<div class="col-xs-4 col-xs-offset-4 col-md-offset-5 col-md-1 col-md-offset-6">
+									<img src={{dpUrl}} class="img-responsive img-circle"/>
+									<span class="changeImg" (click)="changeDP();" *ngIf="!nameStatus"></span>
+								</div>
+
+								<div class="col-xs-12 col-md-offset-4 col-md-3 col-md-offset-5">
+									<h3 *ngIf="nameStatus">{{name}}
+										<span class="editName" (click)="toggleName();"></span>
+									</h3>
+									<label *ngIf="!nameStatus">
+                    <input type="text" value={{name}} #newName />
+                    <span class="tickI" (click)="changeName(newName.value);toggleName();"></span>
+                  </label>
+								</div>
+							</div>
+							<ul class="list-group">
+								<li class="list-group-item" (click)="showAllTodos(); toggleNav();">All
+									<span class="badge">{{todos.length}}</span></li>
+								<li class="list-group-item" (click)="showCompTodos(); toggleNav();">Completed
+									<span class="badge">{{compTodos.length}}</span></li>
+								<li class="list-group-item" (click)="showPendTodos(); toggleNav();">Pending
+									<span class="badge">{{pendTodos.length}}</span></li>
+                <li class="list-group-item" (click)="showImpTodos(); toggleNav();">Important
+									<span class="badge">{{impTodos.length}}</span></li>
+							</ul>
+              <div class="creditsFooter">
+                <p>Developed by <a href="https://www.linkedin.com/in/jovialp/" target="blank">Jovial P Thomas <span class="linked-in"></span> </a></p>
+              </div>
+						</div>
+					</div>
+					<div class="col-xs-2" (click)="toggleNav();">
+						<h1>
+							<div class="navClose"></div>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,386 @@
+.bg{
+  /* margin-top: 50px; */
+  background: #f2f3f8;
+  min-height: 100vh;
+}
+.title{
+  margin-top: 0; 
+  padding: 20px;
+  color: #fff;
+  background: linear-gradient(to right, #c94b4b, #4b134f);
+}
+.box{
+  position: relative;
+  border: 1px solid #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px;
+  background: #fff;
+  color: #000;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px #a5a5a5;
+}
+.box .close-box{
+  position: absolute;
+  top: 5px;
+  font-size: 0.9em;
+  right: 5px;
+  color: #a5a5a5;
+  /* height: 2px; */
+  /* background:  #a5a5a5; */
+  padding: 1px;
+}
+.box .close-box:hover{
+  color: red;
+  cursor: pointer;
+}
+.box .completed{
+  position: absolute;
+  top: 1px;
+  font-size: 1.2em;
+  right: 30px;
+  color: #a5a5a5;
+  padding: 1px;
+}
+.box .completed:hover{
+  color: green;
+  cursor: pointer;
+}
+.star{
+  position: absolute;
+  right: 30px;
+  top: 3px;
+}
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\f006";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100;
+}
+
+.stars-inner::before {
+  content: "\f005";
+  color: #f8ce0b;
+}
+.box p{
+  margin-left: 25px;
+}
+.roundbox{
+  position: absolute;
+  background-color: red;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  transition: 0.2s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+
+}
+.roundbox::before{
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 0;
+  left: 4px;
+  height: 12px;
+  width: 12px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  box-shadow: inset 0 2px 10px #ffffff;
+  transition: 0.2s ease width, 0.2s ease height;
+}
+.roundbox:hover::before{
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  box-shadow: inset 0 2px 4px #ff9d96;
+}
+.roundbox:active{
+  transform:  scale(0.9);
+}
+.checkbox-tick{
+  position: absolute;
+  top: 0%;
+  right: 0;
+  left: 0;
+  background-color: #07d410;
+  box-shadow: 0 2px 4px #92ff97;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  transition: 0.2s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+  transform: rotateZ(-40deg);
+}
+.checkbox-tick::before, .checkbox-tick::after{
+  content: "";
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  opacity: 1;
+  transition: 0.2s ease transform, 0.2s ease opacity;
+}
+.checkbox-tick::before{
+  left: 3px;
+  bottom: 2px;
+  width: 2px;
+  height: 8px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.23);
+  transform: translateY(-5px)
+}
+.checkbox-tick::after{
+  left: 3px;
+  bottom: 7px;
+  width: 15px;
+  height: 2px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.23);
+  transform: translateX(0px)
+}
+
+.space{
+  height: 80px;
+}
+.addButton{
+  position: fixed;
+  bottom: 10px;
+  left:50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  /* cursor: pointer; */
+  background-color: #f8ce0b;
+  border-radius: 50%;
+}
+.closeButton{
+  width: 35px;
+  height: 5px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: 0.5s;
+}
+.closeButton::before, .closeButton::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 5px;
+  height: 35px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: 0.5s;
+}
+.active{
+  background-color: #c94b4b;
+}
+.active  .closeButton{
+  transform: rotate(45deg);
+  left: 8px;
+  top: 22px;
+}
+.active .closeButton::before{
+  background-color: rgba(0,0,0,0);
+  box-shadow: 0 2px 5px rgba(0,0,0,0);
+
+}
+.addMenu{
+  background-color: #4b134f;
+  color: #000000;
+  position: fixed;
+  top:0;
+  transform: translateY(-100%);
+  left: 0px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 7px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: 0.5s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+  /* overflow: hidden; */
+  /* z-index: 1; */
+}
+.addMenu label{
+  margin: 20px auto 10px auto;
+  color: #fff
+}
+.addMenu .validation{
+  text-align: right;
+  color: #f2f3f8;
+}
+.addMenu h2{
+  color: #f8ce0b;
+}
+.addMenu .btn{
+  margin-top: 40px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+  background-color: #07d410;
+  color: #fff;
+}
+.showAddmenu{
+  transform: translateY(0px);
+  top: 0;
+}
+.barMenu{
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 5px;
+  padding: 1px 5px 1px 5px;
+  cursor: pointer;
+  transition: 0.5s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+
+}
+.barMenu::before{
+  content: "\f0c9";
+}
+.barMenu:hover{
+  box-shadow: 0 7px 10px rgba(0,0,0,0.4);
+}
+.navMenu{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: 0.5s ease transform;
+  background-color: rgba(0,0,0,0.2);
+  color: #fff;
+  
+}
+.showNav{
+  transform: translateX(0);
+}
+.navMenuContent{
+  position: relative;
+  height: 100vh;
+  background-color: #fff;
+}
+.profile{
+  min-height: 150px;
+  background-color: #4b134f;
+  padding: 20px 5px;
+}
+.navMenuContent input{
+  background: transparent;
+  box-sizing: border-box;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #aaa;
+}
+.navMenuContent input:focus{
+  border-bottom: 2px solid #fff;
+}
+.navMenuContent .list-group{
+  color: #000;
+  text-align: left;
+  font-weight: bold;
+}
+.navMenuContent li{
+  cursor: pointer;
+}
+
+.navClose{
+  font-family: FontAwesome;
+  color: #fff;
+  margin: 0 0 0 0;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+}
+.navClose::before{
+  content: "\f057";
+}
+
+.navClose:hover{
+  color: #c94b4b;
+}
+.changeImg{
+  position: absolute;
+  transform: translate(20px,-25px);
+  font-family: FontAwesome;
+  background-color: #000;
+  padding: 1px;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  color: #fff;
+  margin: 0 0 0 0;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+}
+.changeImg::before{
+  content: "\f021";
+}
+.editName{
+  font-family: FontAwesome;
+  color: #fff;
+  margin: 0 0 0 0;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+}
+.editName::before{
+  content: "\f14b";
+}
+
+.tickI{
+  position: relative;
+  font-family: FontAwesome;
+  color: #fff;
+  margin: 0px 15px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 20pt;
+  transition: 0.5s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+}
+.tickI::before{
+  content: "\f058";
+}
+.tickI:hover{
+  color: #07d410;
+}
+
+.pm{
+  text-align: center;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+.pm h1,h2,h3,h4{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+.creditsFooter{
+  position: absolute;
+ color: rgba(0,0,0,0.4);
+ bottom: 0;
+ margin-left: 20px;
+}
+.linked-in{
+  font-family: FontAwesome;
+  color: #0277B5;
+  margin: 0 0 0 0;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+}
+.linked-in::before{
+  content: "\f08c";
+}
